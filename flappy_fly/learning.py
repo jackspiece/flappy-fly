@@ -10,6 +10,12 @@ def sigmoid(values):
     return 1.0 / (1.0 + np.exp(-np.clip(values, -30, 30)))
 
 
+def reference_action(game):
+    """Privileged centering teacher; never an input to the learned decoder."""
+    state = game.observe()
+    return int(state["y"] > state["gap_center"] + 12)
+
+
 class ActionDecoder:
     def __init__(self, inputs, hidden=48, seed=7):
         rng = np.random.default_rng(seed)
@@ -147,7 +153,8 @@ class NeuralFeatures:
             (brain.r8[brain.r8_channel == 1], brain.r8_uv[brain.r8_channel == 1]),
         ]:
             cell = np.minimum((uv[:, 0] * columns).astype(int), columns - 1) + columns * np.minimum((uv[:, 1] * rows).astype(int), rows - 1)
-            self.groups.append((indices, cell, np.maximum(1, np.bincount(cell, minlength=columns * rows))))
+            population = np.bincount(cell, minlength=columns * rows)
+            self.groups.append((indices, cell, np.maximum(1, population), population > 0))
         self.regions, self.region_index, self.region_size = np.unique(brain.superclass, return_inverse=True, return_counts=True)
         self.base_size = 3 * columns * rows + len(self.regions)
         self.size = 2 * self.base_size + 2
@@ -157,7 +164,13 @@ class NeuralFeatures:
         self.smooth = None
 
     def extract(self, spikes, previous_action, frames_since_flap):
-        parts = [np.bincount(cell, weights=spikes[indices], minlength=self.columns * self.rows) / size for indices, cell, size in self.groups]
+        parts = []
+        for indices, cell, size, occupied in self.groups:
+            activity = np.bincount(cell, weights=spikes[indices], minlength=self.columns * self.rows) / size
+            if occupied.any():
+                activity[occupied] -= activity[occupied].mean()
+            activity[~occupied] = 0
+            parts.append(activity)
         parts.append(np.bincount(self.region_index, weights=spikes, minlength=len(self.regions)) / self.region_size)
         raw = np.concatenate(parts).astype(np.float32)
         old = raw if self.smooth is None else self.smooth
@@ -165,6 +178,6 @@ class NeuralFeatures:
         return np.r_[self.smooth, self.smooth - old, float(previous_action), min(frames_since_flap, 40) / 40].astype(np.float32)
 
     def description(self):
-        return {"size": self.size, "grid": [self.columns, self.rows], "regions": self.regions.tolist(),
+        return {"schema": "centered-spike-grids-v2", "size": self.size, "grid": [self.columns, self.rows], "regions": self.regions.tolist(),
                 "signals": ["R1-R6 spike grids", "R8p spike grids", "R8y spike grids", "superclass mean spike counts", "activity changes", "previous action", "frames since own flap"],
                 "hidden_game_state_used_by_decoder": False}

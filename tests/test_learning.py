@@ -1,14 +1,40 @@
 from pathlib import Path
 import tempfile
 import unittest
+from types import SimpleNamespace
 
 import numpy as np
 
-from flappy_fly.learning import ActionDecoder, high_contrast
+from flappy_fly.learning import ActionDecoder, NeuralFeatures, high_contrast, reference_action
 from flappy_fly.game import Flappy
 
 
 class LearningTests(unittest.TestCase):
+    def test_spatial_features_remove_shared_rate_but_keep_contrast(self):
+        brain = SimpleNamespace(
+            retina=np.asarray([0, 1]), uv=np.asarray([[0, 0.5], [1, 0.5]]),
+            r8=np.asarray([0, 1]), r8_uv=np.asarray([[0, 0.5], [1, 0.5]]),
+            r8_channel=np.asarray([1, 2]), superclass=np.asarray(["sensory", "sensory"]),
+        )
+        features = NeuralFeatures(brain, columns=2, rows=1)
+        uniform = features.extract(np.ones(2), 0, 20)
+        np.testing.assert_allclose(uniform[:2], 0)
+        contrast = features.extract(np.asarray([0, 1]), 0, 21)
+        self.assertLess(contrast[0], 0)
+        self.assertGreater(contrast[1], 0)
+        self.assertTrue(np.isfinite(contrast).all())
+
+    def test_reference_teacher_can_navigate_development_layouts(self):
+        for seed in range(1400, 1405):
+            game = Flappy(seed, max_frames=1200)
+            last_flap = -100
+            while not (game.terminated or game.truncated):
+                action = int(reference_action(game) and game.frame - last_flap >= 4)
+                if action:
+                    last_flap = game.frame
+                game.step(action)
+            self.assertEqual(game.score, 20, f"Teacher failed seed {seed}")
+
     def test_decoder_learns_and_checkpoint_preserves_predictions(self):
         rng = np.random.default_rng(3)
         x = rng.normal(size=(800, 6)).astype(np.float32)

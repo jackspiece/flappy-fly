@@ -8,6 +8,6 @@ data/
 results/
 *.partial
 *.npz
+!experiments/**/decoder.npz
 *.feather
 *.arrow
-

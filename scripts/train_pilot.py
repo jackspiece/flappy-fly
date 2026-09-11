@@ -12,8 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 import numpy as np
-from flappy_fly.game import Flappy, scene_generator_action
-from flappy_fly.learning import ActionDecoder, NeuralFeatures, high_contrast
+from flappy_fly.game import Flappy
+from flappy_fly.learning import ActionDecoder, NeuralFeatures, high_contrast, reference_action
 
 
 def snapshot(game, action=None, probability=None):
@@ -30,7 +30,7 @@ def baseline(seeds, kind, max_frames):
         previous_flap = -100
         while not game.terminated and not game.truncated:
             if kind == "teacher":
-                proposed = scene_generator_action(game)
+                proposed = reference_action(game)
             elif kind == "periodic":
                 proposed = int(game.frame % 22 == 0)
             else:
@@ -54,6 +54,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--wall-seconds", type=int, default=720)
     parser.add_argument("--rounds", type=int, default=2)
+    parser.add_argument("--seed-offset", type=int, default=100)
     parser.add_argument("--output", type=Path, default=ROOT / "results/learning-pilot")
     args = parser.parse_args()
     if not 480 <= args.wall_seconds <= 960 or not 0 <= args.rounds <= 3:
@@ -68,11 +69,12 @@ def main():
         "stimulus": "RGB game frames converted to black/white at luminance 220/255",
         "neural_ms_per_decision": 10,
         "minimum_flap_interval_frames": 4,
-        "teacher": "scripted controller with privileged game state; labels only, never decoder inputs",
-        "training_seeds": list(range(1000, 1010)),
-        "classification_validation_seeds": [1100, 1101],
-        "policy_validation_seeds": [5001, 5002],
-        "test_seeds": [9001, 9002, 9003],
+        "teacher": "centering controller: flap below gap center + 12 pixels, with a four-frame actuator interval; privileged labels only",
+        "training_seeds": [s + args.seed_offset for s in range(1000, 1010)],
+        "classification_validation_seeds": [s + args.seed_offset for s in [1100, 1101]],
+        "policy_validation_seeds": [s + args.seed_offset for s in [5001, 5002]],
+        "test_seeds": [s + args.seed_offset for s in [9001, 9002, 9003]],
+        "seed_offset": args.seed_offset,
         "rounds": [], "status": "initializing", "budget_seconds": args.wall_seconds,
         "limitations": ["The biological synaptic weights are not trained in this pilot.", "A small held-out evaluation is preliminary, not evidence that fly wiring beats conventional architectures."],
     }
@@ -117,7 +119,7 @@ def main():
             spikes, _ = brain.rgb_step(high_contrast(game.render()), 10, learning=False)
             age = game.frame - last_flap
             encoded = features.extract(spikes, previous_action, age)
-            target = int(scene_generator_action(game) and age >= 4)
+            target = int(reference_action(game) and age >= 4)
             probability = None if model is None else float(model.probabilities(encoded)[0])
             proposed = target if model is None or rng.random() < beta else int(probability >= model.threshold)
             action = int(proposed and age >= 4)
@@ -183,7 +185,7 @@ def main():
             break
         report["status"] = "aggregating_learner_visited_states"
         aggregation = []
-        for seed in range(1200 + 10 * round_number, 1206 + 10 * round_number):
+        for seed in range(1200 + args.seed_offset + 10 * round_number, 1206 + args.seed_offset + 10 * round_number):
             if time.monotonic() >= deadline - 200:
                 break
             result, x, y, _ = episode(seed, model, beta=0.5 if round_number == 0 else 0.15, collect=True, stop_at=deadline - 200)
