@@ -1,0 +1,67 @@
+{
+  "purpose": "inference runtime only; no policy has been trained",
+  "connectivity": "full retained MaleCNS v1.0 graph",
+  "stimulus_controller": "scripted scene generator; game score is not neural performance",
+  "upstream_commit": "78ef3e05ab0fa086032098558d893667068944a0",
+  "neurons": 166700,
+  "edges": 25582938,
+  "graph_array_mib": 196.45415496826172,
+  "peak_process_rss_mib": 930.77734375,
+  "load_seconds": 1.8656173799999891,
+  "warmup_neural_ms": 100.0,
+  "warmup_wall_seconds": 0.2481946780000044,
+  "neural_ms_per_decision": 10.0,
+  "mean_decision_seconds": 0.027407626333330864,
+  "median_decision_seconds": 0.02735340750000148,
+  "estimated_minutes_per_10000_decisions": 4.567937722221811,
+  "timing_limit": "Short-run estimate; training, repeated initialization, and long-term throttling are not included.",
+  "hardware": {
+    "machine": "x86_64",
+    "cpu_count": 4,
+    "python": "3.12.14"
+  },
+  "measurements": [
+    {
+      "sample": 0,
+      "wall_seconds": 0.02440623499998651,
+      "kernel_seconds": 0.022972264000003406,
+      "spikes": 6052,
+      "active_neurons": 6028
+    },
+    {
+      "sample": 1,
+      "wall_seconds": 0.028858526999997025,
+      "kernel_seconds": 0.027241588999999067,
+      "spikes": 10886,
+      "active_neurons": 6753
+    },
+    {
+      "sample": 2,
+      "wall_seconds": 0.02672288200000139,
+      "kernel_seconds": 0.025140546999992353,
+      "spikes": 6287,
+      "active_neurons": 6252
+    },
+    {
+      "sample": 3,
+      "wall_seconds": 0.02593864500001075,
+      "kernel_seconds": 0.0244187539999956,
+      "spikes": 6516,
+      "active_neurons": 6457
+    },
+    {
+      "sample": 4,
+      "wall_seconds": 0.02798393300000157,
+      "kernel_seconds": 0.026491191999994612,
+      "spikes": 7233,
+      "active_neurons": 6684
+    },
+    {
+      "sample": 5,
+      "wall_seconds": 0.03053553599998793,
+      "kernel_seconds": 0.029020862999999508,
+      "spikes": 10093,
+      "active_neurons": 6467
+    }
+  ]
+}

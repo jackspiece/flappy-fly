@@ -1,0 +1,13 @@
+{
+  "verified_full_graph": true,
+  "neurons": 166700,
+  "edges": 25582938,
+  "phase_times": {
+    "download_and_verify_seconds": 6.894794777000001,
+    "connectome_seconds": 16.849908225000007,
+    "prepare_seconds": 3.3381208610000073
+  },
+  "total_seconds": 27.524486183,
+  "peak_child_process_rss_mib": 1596.76171875,
+  "peak_verifier_process_rss_mib": 235.80859375
+}
