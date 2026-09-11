@@ -1,0 +1,11 @@
+fly_neural/
+results/
+data/
+benchmarks/
+experiments/pilot-*/
+docs/assets/experiment.mjs
+docs/assets/levels.mjs
+docs/assets/learned-replay.json
+docs/assets/fonts/
+tests/fixtures/
+package-lock.json

@@ -1,0 +1,3 @@
+# Preserve the exact upstream font and license bytes recorded in sources.json.
+docs/assets/fonts/*.ttf -text
+docs/assets/fonts/*-OFL.txt -text -whitespace

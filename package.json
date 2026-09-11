@@ -1,0 +1,20 @@
+{
+  "name": "flappy-fly",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A mapped fly network meets a one-button arcade game.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node scripts/browser_smoke.mjs",
+    "brand:build": "node scripts/browser_smoke.mjs --capture-brand",
+    "format": "prettier --write docs/index.html docs/assets/site.css docs/assets/app.mjs docs/assets/game.mjs scripts/*.mjs tests/*.mjs .github/**/*.yml *.md notes/*.md experiments/README.md package.json",
+    "format:check": "prettier --check docs/index.html docs/assets/site.css docs/assets/app.mjs docs/assets/game.mjs scripts/*.mjs tests/*.mjs .github/**/*.yml *.md notes/*.md experiments/README.md package.json"
+  },
+  "devDependencies": {
+    "prettier": "3.9.6"
+  }
+}

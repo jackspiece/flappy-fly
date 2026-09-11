@@ -36,7 +36,9 @@ jobs:
       - name: Download, verify, and prepare the full map
         run: python scripts/prepare_data.py
       - name: Measure full-network responses to Flappy Bird scenes
-        run: python scripts/benchmark.py --samples 6 --neural-ms 10 --output results/full-map-benchmark.json
+        run:
+          python scripts/benchmark.py --samples 6 --neural-ms 10 --output
+          results/full-map-benchmark.json
       - name: Collect source and graph reports
         if: always()
         shell: bash

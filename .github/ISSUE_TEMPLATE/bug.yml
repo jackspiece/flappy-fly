@@ -1,0 +1,23 @@
+name: Report a problem
+description: Something broke in the arcade, simulator, or reproduction steps.
+title: '[Bug] '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include what you expected and steps that reproduce the problem.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Browser/device, or OS, Python version, and source commit
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description:
+        Useful logs, screenshots, report files, or a workflow run. Remove credentials
+        before attaching logs.

@@ -1,0 +1,30 @@
+{
+  "Sora-Variable.ttf": {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/Sora%5Bwght%5D.ttf",
+    "bytes": 111400,
+    "sha256": "84ff7096ae3ec6c8be47d906d1a0ba4de7f2ce78c615275c77301964a316e16c"
+  },
+  "Sora-OFL.txt": {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/sora/OFL.txt",
+    "bytes": 4385,
+    "sha256": "ba0b9729c9428ba79a0459ab8ec575791b51509dbec213e383d0316d37fec299"
+  },
+  "DMMono-Regular.ttf": {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmmono/DMMono-Regular.ttf",
+    "bytes": 49744,
+    "sha256": "55b4c98f123daebb3ed27947ba47b2af00554fc6284d639a540bcef5e6258ad2"
+  },
+  "DMMono-OFL.txt": {
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmmono/OFL.txt",
+    "bytes": 4484,
+    "sha256": "2bada5ea45c3c63b7f1ea1f88ce9672c9e4f0c42b2c3b7378949084fe55a3066"
+  },
+  "BarlowCondensed-ExtraBold.ttf": {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/BarlowCondensed-ExtraBold.ttf",
+    "sha256": "724c9c25952d5f4a2d87185d9767aa006144c5f0d944dc05bf7d5d603551c260"
+  },
+  "BarlowCondensed-OFL.txt": {
+    "url": "https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt",
+    "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+  }
+}

@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101712" />
+    <title>Flappy Fly — Tiny brain. Big flap.</title>
+    <meta
+      name="description"
+      content="166,700 mapped fly neurons meet Flappy Bird. Enter the arcade, watch real decoder replays, and follow an open neuroscience experiment."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Flappy Fly — Tiny brain. Big flap." />
+    <meta
+      property="og:description"
+      content="A real fly connectome. One button. An open neuroscience arcade."
+    />
+    <meta property="og:url" content="https://jackspiece.github.io/flappy-fly/" />
+    <meta
+      property="og:image"
+      content="https://jackspiece.github.io/flappy-fly/assets/social-card.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Flappy Fly: Tiny brain. Big flap. A fruit fly with translucent wings floats beside the project title."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://jackspiece.github.io/flappy-fly/" />
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/touch-icon.png" />
+    <link
+      rel="preload"
+      href="assets/fonts/BarlowCondensed-ExtraBold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script type="module" src="assets/app.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="./" aria-label="Flappy Fly home"
+        ><img src="assets/mark.svg" width="34" height="34" alt="" /><span
+          >flappy fly<span class="brand-dot">.</span></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#arcade">The arcade</a><a href="#learning">The experiment</a
+        ><a href="#evidence">The evidence</a>
+      </nav>
+      <a class="source-link" href="https://github.com/jackspiece/flappy-fly"
+        ><svg
+          viewBox="0 0 24 24"
+          width="17"
+          height="17"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 7c.85 0 1.71.12 2.51.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.57c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
+          /></svg
+        ><span>GitHub</span><span aria-hidden="true">↗</span></a
+      >
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span> AN OPEN NEUROSCIENCE ARCADE
+          </p>
+          <h1 id="hero-title">
+            TINY BRAIN.<br />BIG <span>FLAP.</span
+            ><svg class="title-spark" viewBox="0 0 56 56" aria-hidden="true">
+              <path d="M28 0v56M0 28h56M8 8l40 40M8 48 48 8" />
+            </svg>
+          </h1>
+          <p class="hero-intro">
+            166,700 mapped neurons. One very difficult game. An experiment in turning a
+            fly’s neural activity into a well-timed flap.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-coral" id="take-controls">
+              Enter the arcade <span aria-hidden="true">↗</span></button
+            ><a class="text-link" href="#learning"
+              >Follow the experiment <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <div class="stage-note">
+            <span class="stage-symbol" aria-hidden="true">↳</span>
+            <p id="stage-copy">Full map verified. First action decoders trained.</p>
+          </div>
+        </div>
+        <figure class="hero-specimen">
+          <div class="specimen-index">
+            <span>SPECIMEN 001</span><span>D. MELANOGASTER</span>
+          </div>
+          <img
+            src="assets/fly-specimen.svg"
+            width="650"
+            height="590"
+            alt="A detailed illustrated fruit fly with translucent veined wings and amber compound eyes."
+          />
+          <figcaption>
+            <span>ANATOMY INSPIRES. EXPERIMENTS DECIDE.</span
+            ><span>ARTIST’S IMPRESSION</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="stat-strip wrap" aria-label="Full map benchmark measurements">
+        <div><strong>166,700</strong><span>RETAINED NEURONS</span></div>
+        <span class="stat-cross" aria-hidden="true">×</span>
+        <div>
+          <strong>25.58<span>M</span></strong
+          ><span>WEIGHTED CONNECTIONS</span>
+        </div>
+        <span class="stat-cross" aria-hidden="true">→</span>
+        <div><strong>1</strong><span>BUTTON TO FIGURE OUT</span></div>
+        <a href="#evidence" class="stat-proof"
+          ><span class="status-dot"></span
+          ><span
+            >Full map. Standard CPU.<br /><strong>See the benchmark ↗</strong></span
+          ></a
+        >
+      </div>
+
+      <section class="arcade-section wrap" id="arcade" aria-labelledby="arcade-title">
+        <div class="section-topline">
+          <p class="eyebrow">01 / THE ARCADE</p>
+          <span class="mono-label">NO COINS REQUIRED</span>
+        </div>
+        <div class="arcade-shell">
+          <div class="arcade-heading">
+            <h2 id="arcade-title">STAY CURIOUS.<br />STAY AIRBORNE.</h2>
+            <p>
+              Same gravity. Same gaps.<br />
+              Let’s see how you do.
+            </p>
+            <span class="arcade-stamp" aria-hidden="true">↑</span>
+          </div>
+          <div class="arcade-layout">
+            <div class="arcade">
+              <div class="cabinet-heading">
+                <span class="mono-label">FLIGHT DECK / 01</span
+                ><span class="mode-tag" id="mode-tag">SCRIPTED PREVIEW</span>
+              </div>
+              <div class="game-screen">
+                <canvas
+                  id="game-canvas"
+                  width="576"
+                  height="480"
+                  tabindex="0"
+                  role="img"
+                  aria-label="Flappy Fly game. Choose Play yourself, then tap or press Space or Arrow Up to flap."
+                  >The game requires a browser with canvas support.</canvas
+                >
+                <span class="seed-tag" id="seed-tag">SEED 0019</span>
+                <div class="game-overlay" id="game-overlay" hidden>
+                  <span class="overlay-eyebrow" id="overlay-label">YOUR TURN</span
+                  ><strong id="overlay-title">Ready to fly?</strong>
+                  <p id="overlay-copy">A tap is all it takes.</p>
+                  <button class="button button-coral" id="start-flight">
+                    Start flight →
+                  </button>
+                </div>
+              </div>
+              <div class="game-controls">
+                <button
+                  id="pause-game"
+                  class="control-button"
+                  aria-label="Pause preview"
+                >
+                  Pause</button
+                ><button id="restart-game" class="control-button">Restart</button
+                ><button id="new-level" class="control-button">New layout</button
+                ><span class="key-hint">P TO PAUSE</span>
+              </div>
+              <p id="game-announcement" class="sr-only" aria-live="polite"></p>
+            </div>
+            <aside class="arcade-aside" aria-label="Game controls and score">
+              <div class="mode-switch" role="group" aria-label="Game controller">
+                <button id="watch-mode" aria-pressed="true">Watch demo</button
+                ><button id="play-mode" aria-pressed="false">
+                  Play yourself <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+              <div class="scoreboard">
+                <div>
+                  <span class="mono-label">PIPES CLEARED</span
+                  ><strong id="score">0</strong>
+                </div>
+                <div class="best-score">
+                  <span class="mono-label">YOUR BEST</span
+                  ><strong id="best-score">0</strong><span>SAVED ON THIS DEVICE</span>
+                </div>
+              </div>
+              <div class="flight-instructions">
+                <div class="space-key" aria-hidden="true">SPACE <span>↑</span></div>
+                <h3>A little lift goes a long way.</h3>
+                <p>
+                  Tap the game or press <kbd>Space</kbd> to flap. Find your rhythm. Miss
+                  the pipes.
+                </p>
+              </div>
+              <p class="game-disclosure">
+                <span aria-hidden="true">ⓘ</span
+                ><span
+                  >This is you or a scripted demo.<br />The trained decoder’s recorded
+                  flight is below.</span
+                >
+              </p>
+              <a href="#learning" class="arcade-replay-link"
+                >Watch the actual experiment <span aria-hidden="true">↓</span></a
+              >
+            </aside>
+          </div>
+          <div class="arcade-bottom">
+            <span>BUILT FOR CURIOSITY. OPTIMIZED FOR “ONE MORE TRY.”</span
+            ><span>30 FPS / DETERMINISTIC PHYSICS</span>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="learning-section section wrap"
+        id="learning"
+        aria-labelledby="learning-title"
+      >
+        <div class="section-topline">
+          <p class="eyebrow">02 / LEARNING IN THE OPEN</p>
+          <span class="mono-label">GOOD SCIENCE KEEPS THE MISSES</span>
+        </div>
+        <div class="section-heading">
+          <h2 id="learning-title">
+            EVERY FLIGHT<br />TEACHES US <span>SOMETHING.</span>
+          </h2>
+          <p id="learning-summary">
+            The learning pilot trains an action decoder from full-network activity. The
+            mapped connection weights stay fixed.
+          </p>
+        </div>
+        <div class="learning-grid">
+          <div class="scorecard">
+            <div class="card-heading">
+              <span class="mono-label" id="pilot-label">DECODER PILOT</span
+              ><span class="pill" id="pilot-status">RECORDED</span>
+            </div>
+            <p class="scorecard-intro">Mean pipes cleared on three unseen layouts.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">CONTROLLER</th>
+                  <th scope="col">PIPES</th>
+                  <th scope="col">FRAMES</th>
+                </tr>
+              </thead>
+              <tbody id="learning-scores">
+                <tr>
+                  <td colspan="3">Results are loading. Raw reports are on GitHub.</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="card-footnote">
+              The scripted teacher sees privileged game state. Three layouts are an
+              early check; they don’t establish a biological advantage.
+            </p>
+            <a
+              class="text-link"
+              id="learning-report"
+              href="https://github.com/jackspiece/flappy-fly/tree/main/experiments"
+              >Inspect the complete report <span aria-hidden="true">↗</span></a
+            >
+          </div>
+          <div class="replay-card">
+            <div class="card-heading">
+              <span class="mono-label">THE DECODER’S FIRST TEST FLIGHT</span
+              ><span class="recorded-tag"
+                ><span aria-hidden="true">●</span> RECORDED</span
+              >
+            </div>
+            <div class="replay-stage">
+              <canvas
+                id="replay-canvas"
+                width="576"
+                height="480"
+                role="img"
+                aria-label="Recorded evaluation of the learned action decoder"
+              ></canvas
+              ><span class="replay-score" id="replay-score">Loading recording…</span>
+            </div>
+            <div class="replay-controls">
+              <button id="replay-toggle" class="control-button" disabled>
+                Play recording</button
+              ><input
+                id="replay-position"
+                type="range"
+                min="0"
+                max="1"
+                value="0"
+                aria-label="Recording position"
+                disabled
+              /><span id="replay-frame" class="mono-label">0 / 0</span>
+            </div>
+            <p class="card-footnote">
+              Actual evaluation, re-rendered in the arcade style. Always the first test
+              seed, whatever the score.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="method-section"
+        id="experiment"
+        aria-labelledby="experiment-title"
+      >
+        <div class="wrap section">
+          <div class="section-topline">
+            <p class="eyebrow">03 / UNDER THE EXOSKELETON</p>
+            <span class="mono-label">BIOLOGY → COMPUTATION → FLAP</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="experiment-title">REAL WIRING.<br /><span>NEW QUESTIONS.</span></h2>
+            <p>
+              A connectome is a map of connections. We use the retained MaleCNS network
+              inside an approximate simulator, then teach a small decoder to act on its
+              activity.
+            </p>
+          </div>
+          <div class="pipeline">
+            <article>
+              <div class="step-top">
+                <span>01</span
+                ><svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path
+                    d="M8 8h10v10H8zm22 0h10v10H30zM8 30h10v10H8zm22 0h10v10H30z"
+                  /></svg
+                ><span>→</span>
+              </div>
+              <h3>Give it a view.</h3>
+              <p>Game pixels become a high-contrast visual stimulus.</p>
+              <span class="step-tag">OBSERVATION</span>
+            </article>
+            <article>
+              <div class="step-top">
+                <span>02</span
+                ><svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M3 24Q24-4 45 24Q24 52 3 24Z" />
+                  <circle cx="24" cy="24" r="7" /></svg
+                ><span>→</span>
+              </div>
+              <h3>Meet the retina.</h3>
+              <p>A documented adapter drives mapped photoreceptors.</p>
+              <span class="step-tag">MODELED INTERFACE</span>
+            </article>
+            <article>
+              <div class="step-top">
+                <span>03</span
+                ><svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="m10 12 29 1-25 23L10 12l25 21 4-20M14 36l21-3" />
+                  <circle cx="10" cy="12" r="3" />
+                  <circle cx="39" cy="13" r="3" />
+                  <circle cx="14" cy="36" r="3" />
+                  <circle cx="35" cy="33" r="3" /></svg
+                ><span>→</span>
+              </div>
+              <h3>Run the full map.</h3>
+              <p>166,700 retained neurons. Mapped weights held fixed.</p>
+              <span class="step-tag">SIMULATED NETWORK</span>
+            </article>
+            <article class="step-learn">
+              <div class="step-top">
+                <span>04</span
+                ><svg viewBox="0 0 48 48" aria-hidden="true">
+                  <rect x="6" y="6" width="36" height="36" rx="8" />
+                  <path d="M24 34V15m-9 9 9-9 9 9" /></svg
+                ><span>↗</span>
+              </div>
+              <h3>Learn the flap.</h3>
+              <p>A small action decoder learns when to flap or wait.</p>
+              <span class="step-tag">TRAINABLE READOUT</span>
+            </article>
+          </div>
+          <p class="method-note">
+            The current pilots use imitation learning. Reliable play and a benefit over
+            simpler networks are still open questions.
+            <a
+              href="https://github.com/jackspiece/flappy-fly/blob/main/notes/LEARNING.md"
+              >Read the method ↗</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="evidence section wrap"
+        id="evidence"
+        aria-labelledby="evidence-title"
+      >
+        <div class="section-intro">
+          <p class="eyebrow">04 / SHOW YOUR WORK</p>
+          <h2 id="evidence-title">LESS HYPE.<br /><span>MORE DATA.</span></h2>
+          <p>
+            The complete retained map ran on a standard GitHub CPU runner. These are
+            measured responses to six saved game frames.
+          </p>
+          <div class="benchmark-numbers">
+            <div>
+              <strong>0.91<span> GiB</span></strong
+              ><span>PEAK NEURAL-PROCESS RAM</span>
+            </div>
+            <div>
+              <strong>27.4<span> ms</span></strong
+              ><span>PER 10 MS NEURAL WINDOW</span>
+            </div>
+          </div>
+          <a
+            class="text-link"
+            href="https://github.com/jackspiece/flappy-fly/tree/main/benchmarks/2026-09-11-github"
+            >Every measurement. Every source hash. <span aria-hidden="true">↗</span></a
+          >
+          <p class="metric-note">
+            September 11, 2026 · six samples after 100 ms warmup · learning disabled for
+            this runtime benchmark
+          </p>
+        </div>
+        <div class="evidence-card">
+          <div class="card-heading">
+            <span class="mono-label">RUNTIME / SIX RECORDED SAMPLES</span
+            ><span class="pill">VERIFIED</span>
+          </div>
+          <div class="chart-title">
+            <span>Wall time per neural window</span><span class="mono-label">MS</span>
+          </div>
+          <div
+            class="sample-chart"
+            id="sample-chart"
+            role="group"
+            aria-label="Select a measured inference sample"
+          ></div>
+          <div class="sample-detail">
+            <figure>
+              <img
+                id="sample-image"
+                src="assets/sample-1.png"
+                width="288"
+                height="240"
+                loading="lazy"
+                alt="The game image supplied to the model for sample 1."
+              />
+              <figcaption id="sample-caption">MODEL INPUT / SAMPLE 01</figcaption>
+            </figure>
+            <dl>
+              <div>
+                <dt>Wall time</dt>
+                <dd id="sample-time">24.4 <small>ms</small></dd>
+              </div>
+              <div>
+                <dt>Spikes</dt>
+                <dd id="sample-spikes">6,052</dd>
+              </div>
+              <div>
+                <dt>Active neurons</dt>
+                <dd id="sample-neurons">6,028</dd>
+              </div>
+            </dl>
+          </div>
+          <p class="card-footnote">
+            Choose a bar to inspect its exact model input and recorded response. These
+            measurements are not live game telemetry.
+          </p>
+        </div>
+      </section>
+
+      <section class="start-panel wrap" id="start" aria-labelledby="start-title">
+        <div>
+          <p class="eyebrow">THE LAB DOOR IS OPEN</p>
+          <h2 id="start-title">MAKE THE<br /><span>NEXT DISCOVERY.</span></h2>
+          <p>
+            Try the game. Question the method. Reproduce a run. There’s a lot left to
+            figure out.
+          </p>
+          <a class="button button-coral" href="https://github.com/jackspiece/flappy-fly"
+            >Get your hands on the code <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="terminal">
+          <div class="terminal-chrome">
+            <span aria-hidden="true">● ● ●</span><span>~/flappy-fly</span
+            ><span aria-hidden="true">↗</span>
+          </div>
+          <div class="terminal-tabs" role="group" aria-label="Setup instructions">
+            <button data-command="site" aria-pressed="true">Preview site</button
+            ><button data-command="benchmark" aria-pressed="false">
+              Run benchmark
+            </button>
+          </div>
+          <pre><code id="setup-command">git clone https://github.com/jackspiece/flappy-fly.git
+cd flappy-fly
+python -m http.server 8000 --directory docs</code></pre>
+          <div class="terminal-bottom">
+            <span id="setup-note">Then open localhost:8000.</span
+            ><button id="copy-command" class="copy-button">Copy</button>
+          </div>
+          <span id="copy-status" class="sr-only" aria-live="polite"></span>
+        </div>
+      </section>
+
+      <section class="faq section wrap" aria-labelledby="faq-title">
+        <div>
+          <p class="eyebrow">CURIOUS? GOOD.</p>
+          <h2 id="faq-title">A FEW<br />FLY QUESTIONS.</h2>
+        </div>
+        <div class="faq-items">
+          <details>
+            <summary>
+              Wait. Is this a real fly-brain map?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Yes. The wiring comes from MaleCNS v1.0, released by HHMI Janelia, Google
+              Research, and collaborators. We retain 166,700 neurons under the upstream
+              inclusion policy. The simulator and its interfaces are approximate models;
+              the map alone does not recreate a living fly.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What’s actually learning?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              A small action decoder learns from the full network’s activity. The mapped
+              connections stay fixed. Every pilot records the trained parameters,
+              evaluation seeds, baseline scores, and a checkpoint.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Is the fly controlling the game on this page?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <p>
+              The arcade lets you play or watch a scripted demo. The separate recorded
+              flight shows a real decoder evaluation. The full simulator runs in Python
+              and C++ on a GitHub runner.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Is fly wiring better than regular AI?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              We don’t know. Establishing an advantage needs reliable play, many more
+              test layouts, and matched comparisons with simpler and shuffled networks.
+              That’s part of what makes the experiment interesting.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <div class="footer-main">
+        <a class="brand" href="./"
+          ><img src="assets/mark.svg" width="34" height="34" alt="" /><span
+            >flappy fly.</span
+          ></a
+        >
+        <p>A small creature.<br />A beautifully big question.</p>
+        <div>
+          <a href="https://github.com/jackspiece/flappy-fly">Source code ↗</a
+          ><a href="https://github.com/jackspiece/flappy-fly/blob/main/notes/CREDITS.md"
+            >Credits &amp; sources ↗</a
+          ><a href="https://male-cns.janelia.org/download/">MaleCNS data ↗</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>AN INDEPENDENT COMMUNITY EXPERIMENT</span
+        ><span
+          >KEEP FLAPPING. KEEP QUESTIONING.
+          <span class="brand-dot" aria-hidden="true">✳</span></span
+        >
+      </div>
+    </footer>
+    <noscript
+      ><p class="wrap">
+        The interactive arcade needs JavaScript. Source code, reports, and instructions
+        are available in the GitHub repository.
+      </p></noscript
+    >
+  </body>
+</html>

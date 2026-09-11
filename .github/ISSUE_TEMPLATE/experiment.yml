@@ -1,0 +1,24 @@
+name: Propose an experiment
+description: A testable idea for the fly network or action decoder.
+title: '[Experiment] '
+body:
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: What would we learn?
+      description: State the hypothesis and what result would change your mind.
+    validations:
+      required: true
+  - type: textarea
+    id: comparison
+    attributes:
+      label: How would we test it?
+      description:
+        Describe the intervention, baseline, training budget, and held-out evaluation.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Starting points
+      description: Relevant papers, code, measurements, or questions.

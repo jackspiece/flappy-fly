@@ -11,3 +11,4 @@ results/
 !experiments/**/decoder.npz
 *.feather
 *.arrow
+node_modules/

@@ -1,0 +1,18 @@
+{
+  "id": 34625990529,
+  "html_url": "https://github.com/jackspiece/flappy-fly/actions/runs/34625990529",
+  "head_sha": "79e9affba5035b7e9abfa189873bc395bd53063d",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-09-11T17:08:22Z",
+  "updated_at": "2026-09-11T17:14:27Z",
+  "pilot": 2,
+  "artifact_id": 10274705009,
+  "artifact_sha256": "601d8a0fb271ad10b5ed9e5f8a2042fa0ff5fdc554c1d5ed1c07fc2b6daf3bb4",
+  "files": {
+    "report.json": "c9f124cce480839af2421a06a9d1029a67e4394b3a16317dc929a7154e5e0977",
+    "decoder.npz": "2439cb7a3dc15d1aa85143d78df98c0f22237931ea924733295252c8b96d59c3",
+    "replay.json": "b5689a7f890ba229e1acd3f243a736d14af66dcb6a14e900b3f62ed535356c7a"
+  },
+  "selection": "Best round by mean policy-validation score, then frames alive; evaluation uses the first test seed for the replay regardless of score."
+}
