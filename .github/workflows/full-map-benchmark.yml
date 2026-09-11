@@ -1,0 +1,57 @@
+name: Full fly map benchmark
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: full-fly-benchmark
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      STONKFLY_DATA: ${{ runner.temp }}/flappy-fly-data
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned runtime
+        run: |
+          mkdir -p results
+          python -m pip install -r requirements.txt
+          python -m pip freeze > results/environment.txt
+      - name: Verify game behavior
+        run: python -m unittest discover -s tests -v
+      - name: Download, verify, and prepare the full map
+        run: python scripts/prepare_data.py
+      - name: Measure full-network responses to Flappy Bird scenes
+        run: python scripts/benchmark.py --samples 6 --neural-ms 10 --output results/full-map-benchmark.json
+      - name: Collect source and graph reports
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p results
+          for name in manifest.json connectome-import.json source.lock.json preparation.json; do
+            if [[ -f "$STONKFLY_DATA/$name" ]]; then
+              cp "$STONKFLY_DATA/$name" results/
+            fi
+          done
+      - name: Save small reports
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: full-map-benchmark
+          path: results/
+          retention-days: 3
+          if-no-files-found: warn

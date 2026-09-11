@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.so
+*.so.json
+.venv/
+.env
+data/
+results/
+*.partial
+*.npz
+*.feather
+*.arrow
+
