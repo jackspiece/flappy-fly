@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     env:
-      STONKFLY_DATA: ${{ runner.temp }}/flappy-fly-data
+      STONKFLY_DATA: data
       PYTHONUNBUFFERED: '1'
       OMP_NUM_THREADS: '1'
       OPENBLAS_NUM_THREADS: '1'
