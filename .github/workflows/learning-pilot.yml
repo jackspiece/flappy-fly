@@ -1,0 +1,44 @@
+name: Learning pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: full-fly-learning
+  cancel-in-progress: false
+
+jobs:
+  learn:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      STONKFLY_DATA: data
+      PYTHONUNBUFFERED: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install and test
+        run: |
+          python -m pip install -r requirements.txt
+          python -m unittest discover -s tests -v
+      - name: Prepare the verified full map
+        run: python scripts/prepare_data.py
+      - name: Learn an action decoder from real network activity
+        run: python scripts/train_pilot.py --wall-seconds 720 --rounds 2
+      - name: Save checkpoints and measured results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: learning-pilot
+          path: results/learning-pilot/
+          retention-days: 7
+          if-no-files-found: warn
