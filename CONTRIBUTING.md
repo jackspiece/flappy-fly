@@ -17,6 +17,8 @@ it fails on native Windows:
 ```sh
 npm ci
 python -m pip install numpy
+python -m pip install -r requirements-dev.txt
+python -m ruff check .
 python -m unittest discover -s tests -v
 npm test
 npm run test:browser
@@ -30,7 +32,9 @@ processes. Set `CHROME_BIN` if the browser is not on your PATH. It never uses yo
 personal browser profile.
 
 Use `npm run format` before submitting frontend or documentation changes. The formatter
-excludes vendored neural code, generated data, and recorded results.
+excludes vendored neural code, generated data, and recorded results. `ruff check` lints
+the project's Python code with the rules in `pyproject.toml` and skips the pinned
+`fly_neural/` source.
 
 Check phone and desktop screenshots. Keep keyboard focus visible, touch controls usable,
 reduced motion supported, and controller labels accurate. A scripted game preview must
