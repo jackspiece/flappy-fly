@@ -200,4 +200,20 @@ collaborators**. Neural simulation code is pinned from
 
 [Complete credits, data sources, and licenses →](notes/CREDITS.md)
 
+## License
+
+The original Flappy Fly code is released under the [MIT License](LICENSE). Third-party
+material keeps its own license:
+
+- `fly_neural/` is pinned upstream code from `nftechie/stonkfly` and keeps its upstream
+  MIT license, copyright 2026 nftechie and DOOMFLY contributors
+  ([UPSTREAM_LICENSE](fly_neural/UPSTREAM_LICENSE)).
+- The self-hosted fonts in `docs/assets/fonts/` are under the SIL Open Font License 1.1;
+  each font ships with its license text.
+- The MaleCNS v1.0 connectome data is licensed under
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The pipeline downloads the
+  release files at run time and verifies them against
+  [`fly_neural/sources.lock.json`](fly_neural/sources.lock.json); they are not stored in
+  this repository.
+
 <p align="center"><sub>An independent community experiment. Keep flapping. Keep questioning.</sub></p>
