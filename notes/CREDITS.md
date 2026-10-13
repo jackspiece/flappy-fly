@@ -3,6 +3,14 @@
 Flappy Fly is an independent community experiment. The institutions below made the
 underlying research or tools; they do not endorse this project.
 
+## Licenses
+
+The original Flappy Fly code is released under the [MIT License](../LICENSE). That
+license does not cover the third-party material credited below, which keeps its own
+terms: `fly_neural/` keeps its upstream MIT license
+([UPSTREAM_LICENSE](../fly_neural/UPSTREAM_LICENSE)), the self-hosted fonts are under
+the SIL Open Font License 1.1, and the MaleCNS v1.0 data is licensed under CC BY 4.0.
+
 ## The mapped anatomy
 
 **MaleCNS v1.0**, from HHMI Janelia’s FlyEM team, Google Research, and their
