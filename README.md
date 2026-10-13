@@ -139,9 +139,12 @@ keyboard and touch, respects reduced motion, and keeps your best score on your d
 
 ### Reproduce the full-network pilot
 
-Use **Python 3.12+**, a **C++17 compiler**, and the packages below. Data preparation
-downloads about **1.11 GB** and needs additional working space. Source files and
-compiled arrays are verified against pinned hashes.
+Use **Linux or macOS** (on Windows, use WSL2) with **Python 3.12+**, a **C++17
+compiler** available as `c++`, and the packages below. The pipeline imports Python's
+Unix-only `resource` module and builds its native kernel as a `.so` or `.dylib` library,
+so it does not run on native Windows. Data preparation downloads about **1.11 GB** and
+needs additional working space. Source files and compiled arrays are verified against
+pinned hashes.
 
 ```sh
 python -m pip install -r requirements.txt

@@ -9,8 +9,10 @@ Serve `docs/` with any static web server. No bundler is required. The editable i
 is in `docs/index.html`, `docs/assets/site.css`, and `docs/assets/app.mjs`. Browser
 physics and rendering live in `docs/assets/game.mjs`.
 
-For development checks, use Node.js 24+, Python 3.12+, NumPy, a C++17 compiler, and
-Chrome or Chromium:
+For development checks, use Linux or macOS (on Windows, use WSL2) with Node.js 24+,
+Python 3.12+, NumPy, a C++17 compiler, and Chrome or Chromium. The Python test suite
+imports the Unix-only `resource` module and builds a native `.so` or `.dylib` kernel, so
+it fails on native Windows:
 
 ```sh
 npm ci
