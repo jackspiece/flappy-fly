@@ -21,6 +21,6 @@
     "format:check": "prettier --check docs/index.html docs/assets/site.css docs/assets/app.mjs docs/assets/game.mjs scripts/*.mjs tests/*.mjs .github/**/*.yml *.md notes/*.md experiments/README.md package.json"
   },
   "devDependencies": {
-    "prettier": "3.9.6"
+    "prettier": "3.10.1"
   }
 }
