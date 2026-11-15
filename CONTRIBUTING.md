@@ -9,12 +9,16 @@ Serve `docs/` with any static web server. No bundler is required. The editable i
 is in `docs/index.html`, `docs/assets/site.css`, and `docs/assets/app.mjs`. Browser
 physics and rendering live in `docs/assets/game.mjs`.
 
-For development checks, use Node.js 24+, Python 3.12+, NumPy, a C++17 compiler, and
-Chrome or Chromium:
+For development checks, use Linux or macOS (on Windows, use WSL2) with Node.js 24+,
+Python 3.12+, NumPy, a C++17 compiler, and Chrome or Chromium. The Python test suite
+imports the Unix-only `resource` module and builds a native `.so` or `.dylib` kernel, so
+it fails on native Windows:
 
 ```sh
 npm ci
 python -m pip install numpy
+python -m pip install -r requirements-dev.txt
+python -m ruff check .
 python -m unittest discover -s tests -v
 npm test
 npm run test:browser
@@ -28,7 +32,9 @@ processes. Set `CHROME_BIN` if the browser is not on your PATH. It never uses yo
 personal browser profile.
 
 Use `npm run format` before submitting frontend or documentation changes. The formatter
-excludes vendored neural code, generated data, and recorded results.
+excludes vendored neural code, generated data, and recorded results. `ruff check` lints
+the project's Python code with the rules in `pyproject.toml` and skips the pinned
+`fly_neural/` source.
 
 Check phone and desktop screenshots. Keep keyboard focus visible, touch controls usable,
 reduced motion supported, and controller labels accurate. A scripted game preview must

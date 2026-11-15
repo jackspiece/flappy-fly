@@ -6,9 +6,12 @@ checkpoint, first-test replay, and source/run receipt.
 
 ## Pilot 02 · September 11, 2026
 
-**Result: 0, 0, 0 pipes on test seeds 9101, 9102, 9103.** Each episode ended after 58
-frames. The privileged teacher cleared 9 pipes per test layout at the 600-frame cap. The
-selected decoder is not a reliable controller.
+**Result: 0, 0, 0 pipes on test seeds 9101, 9102, 9103.** Each episode ended at frame
+58, before the first pipe can reach the fly (about frame 87), so the decoder never
+reached a pipe. It survived fewer frames than random flapping (mean 75.3) or periodic
+flapping (87.0) on the same seeds. The first-test recording shows two flaps, at frames 0
+and 19, followed by a fall into the ground. The privileged teacher cleared 9 pipes per
+test layout at the 600-frame cap. The selected decoder is not a reliable controller.
 
 The run collected 6,212 training examples in three fitting rounds. Round 1 was selected
 by policy-validation score and then mean frames alive; its checkpoint was fitted on

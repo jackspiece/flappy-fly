@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "description": "A mapped fly network meets a one-button arcade game.",
+  "homepage": "https://jackspiece.github.io/flappy-fly/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackspiece/flappy-fly.git"
+  },
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=24"

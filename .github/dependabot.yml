@@ -1,0 +1,19 @@
+# Weekly update pull requests keep the SHA-pinned actions, Prettier, and the
+# pinned Python packages (requirements.txt and requirements-dev.txt) current.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns: ['*']
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly

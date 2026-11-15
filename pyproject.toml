@@ -1,0 +1,20 @@
+# Lint settings for the project's own Python code. To run the CI check:
+#   python -m pip install -r requirements-dev.txt
+#   python -m ruff check .
+
+[tool.ruff]
+target-version = "py312"
+# fly_neural/ is pinned upstream code. Its hashes are recorded in
+# fly_neural/upstream.json, so it stays byte-identical and is not linted.
+extend-exclude = ["fly_neural"]
+# Keep that exclusion when an editor or hook passes file paths directly.
+force-exclude = true
+
+[tool.ruff.lint]
+# An explicit rule list keeps CI stable when a ruff upgrade changes its defaults.
+select = ["E4", "E7", "E9", "W", "F", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# The scripts put the repository root on sys.path before importing project
+# modules, so they run as `python scripts/<name>.py` without an install step.
+"scripts/*.py" = ["E402"]
